@@ -3,6 +3,9 @@ from flask import Flask, render_template, request
 # TODO: create new Flask app
 app = Flask(__name__)
 
+global user
+user = 'samar'
+
 
 @app.route("/")
 def main_page():
@@ -19,6 +22,7 @@ def sign_up():
     username = request.form['username']
     password = request.form['password']
 
+
     if not user_exists(email=email, username=username, password=password):
         return "<h2>New user has been created</h2>"
     else:
@@ -27,6 +31,7 @@ def sign_up():
 
 def user_exists(email, username, password):
     # TODO: check for user if exists
-
-
-    return None
+    if username == user:
+        return True
+    else:
+        return False
